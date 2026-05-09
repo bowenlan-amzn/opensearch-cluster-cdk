@@ -576,8 +576,9 @@ export class InfraStack extends Stack {
         ),
         role: this.instanceRole,
         vpcSubnets: {
-          subnetType: SubnetType.PRIVATE_WITH_EGRESS,
+          subnetType: SubnetType.PUBLIC,
         },
+        associatePublicIpAddress: true,
         securityGroup: props.securityGroup,
         blockDevices: [{
           deviceName: '/dev/xvda',

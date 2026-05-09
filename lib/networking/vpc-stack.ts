@@ -59,15 +59,11 @@ export class NetworkStack extends Stack {
       this.vpc = new Vpc(this, 'opensearchClusterVpc', {
         ipAddresses: IpAddresses.cidr(cidrRange),
         maxAzs: 3,
+        natGateways: 0,
         subnetConfiguration: [
           {
             name: 'public-subnet',
             subnetType: SubnetType.PUBLIC,
-            cidrMask: 24,
-          },
-          {
-            name: 'private-subnet',
-            subnetType: SubnetType.PRIVATE_WITH_EGRESS,
             cidrMask: 24,
           },
         ],
